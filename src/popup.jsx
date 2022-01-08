@@ -7,6 +7,7 @@ function Popup(){
 
     const itemStr = JSON.stringify(items)
     console.log(items);
+
     console.log(itemStr);
 
     return (
@@ -19,21 +20,45 @@ function Popup(){
             <button>Save</button>
         </div>
         <ul className="todo-items">
-            <li className="done item" onClick={head}>This is me <div><button>A</button><button>D</button></div></li>
-            <li >This is me<div><button>A</button><button>D</button></div></li>
-            <li >This is me<div><button>A</button><button>D</button></div></li>
+            <li className="item" onClick={head}><div className="done"> This is me</div> <div><button>A</button><button>D</button></div></li>
+            <li ><div> This is me</div><div><button>A</button><button>D</button></div></li>
+            <li ><div> This is me</div><div><button>A</button><button>D</button></div></li>
         </ul>
         </>
         
     );
 }
 
-function fetchItem(){
-    let items = localStorage.getItem('todo-items')
+function fetchItems(){
+
+    const itemsList = document.querySelector('ul.todo-items')
+    itemsList.innerHTML = '';
+    let newItemHTML = '';
+    try {
+        let items = localStorage.getItem('todo-items')
+        let itemArr = JSON.parse(items);
+        for (let index = 0; index < itemArr.length; index++) {
+            let status = '';
+            if(itemArr[index].status === 1){
+                status = 'className="done"'
+            }
+            newItemHTML += `<li className="item" data-itemindex='${i}' 
+            onClick={head}><div ${status}>${itemArr[i].item}</div> 
+            <div>
+            <button>A</button>
+            <button>D</button><
+            /div>
+            </li>`
+            
+        }
+    } catch (error) {
+        
+    }
 }
 
-function saveItem(){
-
+function saveItem(obj){
+    let string = JSON.stringify(obj);
+    localStorage.setItem('todo-items', string)
 }
 
 function head(){
