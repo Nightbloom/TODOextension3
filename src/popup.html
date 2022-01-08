@@ -6,12 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+        }
         body{
             width: 350px;
             background: black;
             color: wheat;
         }
-
+        .todo-items,
+        .todo-items li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .todo-items li{
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+        .todo-items li:hover{
+            background: rgba(116, 110, 110, 0.596);
+        }
+        .todo-items li.done{
+            text-decoration: line-through;
+        }
+        .todo-items div button{
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
